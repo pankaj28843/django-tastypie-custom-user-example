@@ -2,7 +2,8 @@
 django-tastypie-custom-user-example
 ========================
 
-A project template for Django 1.5 is taken from [twoscoops/django-twoscoops-project](https://github.com/twoscoops/django-twoscoops-project)
+A project template for Django 1.5 is taken from `twoscoops/django-twoscoops-project
+<https://github.com/twoscoops/django-twoscoops-project>`_
 
 To use this project follow these steps:
 
@@ -95,8 +96,15 @@ Services expect a requirements.txt file in the root of projects.*
 
 Acknowledgements
 ================
-- Many thanks to everyone who read my [blog post](http://psjinx.com/programming/2013/06/07/so-you-want-to-create-users-using-djangotastypie/) and suggested possible improvements.
-- All of the [contributers](https://github.com/twoscoops/django-twoscoops-project/blob/master/CONTRIBUTORS.txt) to [django-twoscoops-project](https://github.com/twoscoops/django-twoscoops-project) project.
+- Many thanks to everyone who read my blog post[1] and suggested possible improvements.
+- All of the contributers[2] to django-twoscoops-project[3] project.
 - All of the contributors_ to this project.
 
 .. _contributors: https://github.com/psjinx/django-tastypie-custom-user-example/blob/master/CONTRIBUTORS.txt
+
+
+Links
+=====
+#. http://psjinx.com/programming/2013/06/07/so-you-want-to-create-users-using-djangotastypie/
+#. https://github.com/twoscoops/django-twoscoops-project/blob/master/CONTRIBUTORS.txt
+#. https://github.com/twoscoops/django-twoscoops-project

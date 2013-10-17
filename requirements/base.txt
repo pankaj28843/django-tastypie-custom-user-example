@@ -1,0 +1,7 @@
+Django==1.5.4
+bpython==0.12
+django-braces==1.2.2
+django-model-utils==1.4.0
+logutils==0.3.3
+South==0.8.1
+django-tastypie==0.10.0

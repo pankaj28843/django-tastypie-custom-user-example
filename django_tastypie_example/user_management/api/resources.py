@@ -28,13 +28,16 @@ class UserResource(ModelResource):
         resource_name = 'user'
 
     def hydrate(self, bundle):
-        raw_password = bundle.data.pop('password')
-        if not validate_password(raw_password):
-            raise CustomBadRequest(
-                code='invalid_password',
-                message='Your password is invalid.')
+        try:
+            raw_password = bundle.data.pop('password')
+            if not validate_password(raw_password):
+                raise CustomBadRequest(
+                    code='invalid_password',
+                    message='Your password is invalid.')
 
-        bundle.obj.set_password(raw_password)
+            bundle.obj.set_password(raw_password)
+        except KeyError:
+            pass
 
         return bundle
 

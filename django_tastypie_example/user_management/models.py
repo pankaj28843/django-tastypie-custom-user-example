@@ -82,6 +82,17 @@ class User(AbstractBaseUser, PermissionsMixin):
 #===========================================================================
 # SIGNALS
 #===========================================================================
+def create_api_key(sender, **kwargs):
+    """
+    A signal for hooking up automatic ``ApiKey`` creation.
+    """
+    # By the time next line is executed, AUTH_USER_MODEL will be already
+    # configured.
+    from tastypie.models import ApiKey
+    if kwargs.get('created') is True:
+        ApiKey.objects.create(user=kwargs.get('instance'))
+
+
 def signals_import():
     ''' A note on signals.
 
@@ -91,16 +102,6 @@ def signals_import():
     '''
     # Defining create_api_key manually here to avoid
     # https://github.com/toastdriven/django-tastypie/issues/1009
-    def create_api_key(sender, **kwargs):
-        """
-        A signal for hooking up automatic ``ApiKey`` creation.
-        """
-        # By the time next line is executed, AUTH_USER_MODEL will be already
-        # configured.
-        from tastypie.models import ApiKey
-        if kwargs.get('created') is True:
-            ApiKey.objects.create(user=kwargs.get('instance'))
-
     models.signals.post_save.connect(create_api_key, sender=User)
 
 signals_import()

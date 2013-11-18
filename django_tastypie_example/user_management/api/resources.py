@@ -90,6 +90,11 @@ class CreateUserResource(ModelResource):
                 code='invalid_password',
                 message='Your password is invalid.')
 
-        bundle.obj.set_password(raw_password)
+        bundle = super(CreateUserResource, self).obj_create(bundle, **kwargs)
 
-        return super(CreateUserResource, self).obj_create(bundle, **kwargs)
+        # set password for newly created user
+        bundle.obj.set_password(raw_password)
+        # save again
+        bundle.obj.save()
+
+        return bundle

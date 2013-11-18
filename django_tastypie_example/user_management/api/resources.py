@@ -1,3 +1,5 @@
+from django.contrib.auth.hashers import make_password
+
 from tastypie.authentication import (BasicAuthentication, MultiAuthentication,
                                      ApiKeyAuthentication)
 from tastypie.authorization import Authorization
@@ -90,11 +92,7 @@ class CreateUserResource(ModelResource):
                 code='invalid_password',
                 message='Your password is invalid.')
 
-        bundle = super(CreateUserResource, self).obj_create(bundle, **kwargs)
+        ## Add password to kwargs
+        kwargs["password"] = make_password(raw_password)
 
-        # set password for newly created user
-        bundle.obj.set_password(raw_password)
-        # save again
-        bundle.obj.save()
-
-        return bundle
+        return super(CreateUserResource, self).obj_create(bundle, **kwargs)
